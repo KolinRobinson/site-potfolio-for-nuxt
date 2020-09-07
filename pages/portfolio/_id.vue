@@ -36,26 +36,26 @@
         </div>
     </section>
 
-    <!-- <section class="work-color">
+    <section class="work-color">
         <div class="container">
             <div class="work-color__wrapper">
-                <h2 class="work-color__sub-title sub-title">Цветовая палитра сайта</h2>
+                <h2 class="work-color__sub-title sub-title">{{work.colorTitle}}</h2>
                 <div class="work-color__blocks">
-                    <div class="work-color__single" style="background-color: #0B0B0B; color: #FFFFFF;">
-                        <p>Color: #0B0B0B</p>
+                    <div class="work-color__single" :style="{backgroundColor: color1, color: color3}">
+                        <p>Color: {{work.color1}}</p>
                     </div>
-                    <div class="work-color__single" style="background-color: #690102; color: #0B0B0B;">
-                        <p>Color: #690102</p>
+                    <div class="work-color__single" :style="{backgroundColor: color2, color: color1}">
+                        <p>Color: {{work.color2}}</p>
                     </div>
-                    <div class="work-color__single" style="background-color: #FFFFFF; color: #690102;">
-                        <p>Color: #FFFFFF</p>
+                    <div class="work-color__single" :style="{backgroundColor: color3, color: color2}">
+                        <p>Color: {{work.color3}}</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="work-mobile">
+    <!-- <section class="work-mobile">
         <div class="container">
             <div class="work-mobile__wrapper">
                 <h2 class="work-color__sub-title sub-title">Адаптив и контакт с<br>пользователем</h2>
@@ -149,12 +149,23 @@ export default {
     }).then(entries => {
       console.log(entries.items[0].fields)
       return {
-        work: entries.items[0].fields
+        work: entries.items[0].fields,
+        color1: entries.items[0].fields.color1,
+        color2: entries.items[0].fields.color2,
+        color3: entries.items[0].fields.color3
       }
     })
     .catch(console.error)
   },
+  data() {
+    return {
+
+    
+    };
+  },
+    
   mounted(){
+    console.log(this.work)
   }
 
 }
