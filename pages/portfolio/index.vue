@@ -9,12 +9,14 @@
             <div class="empty-spacer-4"></div>
             <div class="empty-spacer-5"></div>
     <!-- render work -->
-    <a  v-for="work in works" 
-        :key="work.id" 
-        class="periodic-element" :class="[work.fields.classPrew]"
-        :data-description="work.fields.descrPrew" 
-        href="#"
-        @click.prevent="openWork(work)">
+          <a  v-for="work in works"
+                      :key="work.id"
+                      class="periodic-element" :class="[work.fields.classPrew]"
+                      :data-description="work.fields.descrPrew"
+                      :href="work.fields.linkSite"
+                      target="_blank"
+          >
+
         <div class="periodic-element-inner">
             <div class="title">{{work.fields.titlePrew}}</div>
             <div class="description">{{work.fields.titleWork}}</div>
@@ -40,7 +42,7 @@
             </div>
         </div>
     </main>
-    
+
   </section>
 </template>
 
@@ -48,6 +50,7 @@
 import {createClient} from '~/plugins/contentful.js'
 
 const singleWork = createClient()
+
 
 export default {
   asyncData ({ env, params }) {
@@ -62,19 +65,18 @@ export default {
     })
   },
   mounted() {
-
   },
   methods: {
-    openWork(work) {
-      this.$router.push('/portfolio/' + work.fields.titleWork)
-    }
+    // openWork(work) {
+    //   this.$router.push('/portfolio/' + work.fields.titleWork)
+    // }
   }
 
 }
 </script>
 
 <style lang="scss">
-  
+
   aside.context {
     text-align: center;
     color: #fff;

@@ -68,24 +68,33 @@ export default {
      */
     build: {},
     generate: {
-        // routes() {
-        //     return Promise.all([
-        //             // get all blog posts
-        //             createClient(config).getEntries({
-        //                 'content_type': config.CTF_SINGLE_WORK_TYPE_ID
-        //             }),
-        //             // get the blog post content type
-        //             createClient(config).getSpace(config.CTF_SPACE_ID)
-        //             .then(space => space.getContentType(config.CTF_SINGLE_WORK_TYPE_ID))
-        //         ])
-        //         .then(([entries]) => {
-        //             return [
-        //                 // map entries to URLs
-        //                 ...entries.items.map(entry => `/portfolio/${entry.fields.titleWork}`),
-        //                 // map all possible tags to URLs
-        //             ]
-        //         })
-        // }
+        routes() {
+         return createClient(config).getEntries({
+              'content_type': config.CTF_SINGLE_WORK_TYPE_ID,
+              order: '-sys.createdAt'
+            })
+            .then(entries => {
+                return [].concat({
+                  ...entries.items.map(entry => `/portfolio/${entry.fields.titleWork}`)
+                })
+            })
+
+            // return Promise.all([
+            //         // get all blog posts
+            //         createClient(config).getEntries({
+            //           'content_type': config.CTF_SINGLE_WORK_TYPE_ID,
+            //           order: '-sys.createdAt'
+            //         }),
+            //         // get the blog post content type
+            //         // createClient(config).getSpace(config.CTF_SPACE_ID)
+            //         // .then(space => space.getContentType(config.CTF_SINGLE_WORK_TYPE_ID))
+            //     ])
+            //     .then((entries) => {
+            //         return [
+            //             ...entries.items.map(entry => `/portfolio/${entry.fields.titleWork}`),
+            //         ]
+            //     })
+        }
     },
     env: {
         CTF_SPACE_ID: config.CTF_SPACE_ID,

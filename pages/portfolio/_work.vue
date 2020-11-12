@@ -13,47 +13,47 @@
         </a>
     </section>
 
-    <section id="workHistory" class="work-history">
-        <div class="container">
-            <div class="work-history__wrapper">
-                <h2 class="work-history__sub-title sub-title">{{work.historyTitle}}</h2>
-                <div class="work-history__info">
-                    <p class="work-history__info--text">{{work.historyInfo}}</p>
-                </div>
-                <div class="work-history__link">
-                    <a :href="work.linkSite" class="visit-link-right">visit website</a>
-                </div>
-            </div>
-        </div>
-    </section>
+<!--    <section id="workHistory" class="work-history">-->
+<!--        <div class="container">-->
+<!--            <div class="work-history__wrapper">-->
+<!--                <h2 class="work-history__sub-title sub-title">{{work.historyTitle}}</h2>-->
+<!--                <div class="work-history__info">-->
+<!--                    <p class="work-history__info&#45;&#45;text">{{work.historyInfo}}</p>-->
+<!--                </div>-->
+<!--                <div class="work-history__link">-->
+<!--                    <a :href="work.linkSite" class="visit-link-right">visit website</a>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </section>-->
 
-    <section class="work-view">
-        <div class="container">
-            <figure class="work-view__wrapper">
-                <img :src="work.viewImg[0].fields.file.url" :alt="work.viewImg[0].fields.title" class="work-view__img">
-                <figcaption class="work-view__text">{{work.viewImgText}}</figcaption>
-            </figure>
-        </div>
-    </section>
+<!--    <section class="work-view">-->
+<!--        <div class="container">-->
+<!--            <figure class="work-view__wrapper">-->
+<!--                <img :src="work.viewImg[0].fields.file.url" :alt="work.viewImg[0].fields.title" class="work-view__img">-->
+<!--                <figcaption class="work-view__text">{{work.viewImgText}}</figcaption>-->
+<!--            </figure>-->
+<!--        </div>-->
+<!--    </section>-->
 
-    <section class="work-color">
-        <div class="container">
-            <div class="work-color__wrapper">
-                <h2 class="work-color__sub-title sub-title">{{work.colorTitle}}</h2>
-                <div class="work-color__blocks">
-                    <div class="work-color__single" :style="{backgroundColor: color1, color: color3}">
-                        <p>Color: {{work.color1}}</p>
-                    </div>
-                    <div class="work-color__single" :style="{backgroundColor: color2, color: color1}">
-                        <p>Color: {{work.color2}}</p>
-                    </div>
-                    <div class="work-color__single" :style="{backgroundColor: color3, color: color2}">
-                        <p>Color: {{work.color3}}</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+<!--    <section class="work-color">-->
+<!--        <div class="container">-->
+<!--            <div class="work-color__wrapper">-->
+<!--                <h2 class="work-color__sub-title sub-title">{{work.colorTitle}}</h2>-->
+<!--                <div class="work-color__blocks">-->
+<!--                    <div class="work-color__single" :style="{backgroundColor: color1, color: color3}">-->
+<!--                        <p>Color: {{work.color1}}</p>-->
+<!--                    </div>-->
+<!--                    <div class="work-color__single" :style="{backgroundColor: color2, color: color1}">-->
+<!--                        <p>Color: {{work.color2}}</p>-->
+<!--                    </div>-->
+<!--                    <div class="work-color__single" :style="{backgroundColor: color3, color: color2}">-->
+<!--                        <p>Color: {{work.color3}}</p>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </section>-->
 
     <!-- <section class="work-mobile">
         <div class="container">
@@ -145,7 +145,7 @@ export default {
   asyncData ({ env, params }) {
     return singleWork.getEntries({
       'content_type': env.CTF_SINGLE_WORK_TYPE_ID,
-      'fields.titleWork': params.id
+      'fields.titleWork': params.work
     }).then(entries => {
       console.log(entries.items[0].fields)
       return {
@@ -157,15 +157,19 @@ export default {
     })
     .catch(console.error)
   },
+
+  props: {
+    worked: Object,
+  },
   data() {
     return {
 
-    
+
     };
   },
-    
+
   mounted(){
-    console.log(this.work)
+    console.log(this.worked)
   }
 
 }
