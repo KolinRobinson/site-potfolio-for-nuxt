@@ -21,7 +21,7 @@
         "nuxt-buefy": "^0.4.2",
         "sass-loader": "^10.0.1"
     },
-    "browserlist": [
+    "browserslist": [
         "> 0.2%",
         "last 4 versions",
         "not dead"
