@@ -54,7 +54,6 @@ const singleWork = createClient()
 
 export default {
   asyncData ({ env, params }) {
-
     return singleWork.getEntries({
       'content_type': env.CTF_SINGLE_WORK_TYPE_ID,
       order: '-sys.createdAt'
