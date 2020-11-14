@@ -17,13 +17,13 @@
       <h2 class="error_title">
         Instagram:
       </h2>
-      <a href="https://www.instagram.com/senyassharagi/" data-type="instagram" class="error_link">senyassharagi</a>
+      <a href="https://www.instagram.com/tarassenko.dev/" data-type="instagram" class="error_link">tarassenko.dev</a>
     </div>
     <div class="error_telegram error_block">
       <h2 class="error_title">
         Telegram:
       </h2>
-      <a href="https://t.me/senyassharagi" data-type="telegram" class="error_link">t.me/senyassharagi</a>
+      <a href="https://t.me/tarassenko_dev" data-type="telegram" class="error_link">t.me/tarassenko_dev</a>
     </div>
   </main>
 </template>

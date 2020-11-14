@@ -11,6 +11,7 @@
     "dependencies": {
         "@nuxtjs/axios": "^5.12.0",
         "contentful-import": "^7.9.6",
+        "contentful-rich-text-vue-renderer": "^1.1.5",
         "nuxt": "^2.14.0"
     },
     "devDependencies": {

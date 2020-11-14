@@ -56,17 +56,37 @@
         <input type="text" placeholder="Дополнительный способ связи(Telegram, instagram)" v-model="formOther" class="form_input">
         <label><input type="checkbox" v-model="formLegacy" id="legacy">Я прочитал и принимаю <a href="">политику конфиденциальности</a>.</label>
         <button class="form_submit" :disabled='isDisabled' @click.prevent="submitButton">Отправить</button>
-
       </form>
     </div>
+    <politic-popup @close="modalClosed" :text-popup="textPopup" v-if="!politicOpen"/>
   </main>
 </template>
 
 <script>
-const SECURITY = '1074223510:AAEe-0iWEyHHKiTfqAM_mhrPOuObLuC9DRs'; // токен от BotFather
+import politicPopup from '~/components/politicPopup.vue';
+const SECURITY = '1074223510:AAEe-0iWEyHHKiTfqAM_mhrPOuObLuC9DRs';
 const LETTER = '-333712879';
 
+import {createClient} from '~/plugins/contentful.js'
+
+const popup = createClient()
+
 export default {
+  components: { politicPopup },
+  asyncData ({ env, params }) {
+    return popup.getEntries({
+      'content_type': env.CTF_POPUP_TYPE_ID,
+      order: '-sys.createdAt'
+    }).then(entries => {
+      for(let item in entries.items){
+        if(entries.items[item].sys.id == '5grI44WrS00uGiPW0LTi4r'){
+          return {
+            textPopup: entries.items[item].fields.popupContent
+          }
+        }
+      }
+    })
+  },
   data() {
     return {
       formName: '',
@@ -74,6 +94,7 @@ export default {
       formTitle: '',
       formText: '',
       formOther: '',
+      politicOpen: true,
       formLegacy: false
     };
   },
@@ -106,8 +127,14 @@ export default {
       alert('сообщение отправлено!');
       this.formEmail = this.formName = this.formTitle = this.formText = this.formOther = '';
       this.formLegacy = false;
+    },
+    popupOpen(){
+        this.politicOpen = false
+      },
+      modalClosed(){
+        this.politicOpen = true
+      },
 
-    }
   }
 }
 </script>
