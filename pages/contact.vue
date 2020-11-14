@@ -54,7 +54,7 @@
         <input type="text" placeholder="Укажите тему письма" v-model="formTitle" required class="form_input">
         <input type="text" placeholder="Введите сообщение" required v-model="formText" class="form_input">
         <input type="text" placeholder="Дополнительный способ связи(Telegram, instagram)" v-model="formOther" class="form_input">
-        <label><input type="checkbox" v-model="formLegacy" id="legacy">Я прочитал и принимаю <a href="">политику конфиденциальности</a>.</label>
+        <label><input type="checkbox" v-model="formLegacy" id="legacy">Я прочитал и принимаю <a @click.prevent="popupOpen">политику конфиденциальности</a>.</label>
         <button class="form_submit" :disabled='isDisabled' @click.prevent="submitButton">Отправить</button>
       </form>
     </div>
