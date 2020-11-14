@@ -112,6 +112,165 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
+
+/* contact */
+
+.contact {
+    &__title {
+        font-size: 5rem;
+        width: 100%;
+        text-align: center;
+        margin: 5rem 0 7rem 0;
+        @media screen and (max-width: 500px) {
+            font-size: 3rem;
+        }
+    }
+    &__wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        @media screen and (max-width: 750px) {
+            flex-direction: column;
+        }
+        &--info {
+            display: flex;
+            flex: 1 1;
+            align-items: center;
+            justify-content: space-between;
+            @media screen and (max-width: 450px) {
+                flex-direction: column-reverse;
+            }
+            .social {
+                &_link {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    flex-direction: column;
+                    @media screen and (max-width: 450px) {
+                        flex-direction: row;
+                        width: 100%;
+                        justify-content: space-between;
+                    }
+                    a {
+                        margin-bottom: 2rem;
+                        cursor: pointer;
+                        z-index: 100;
+                    }
+                }
+                &_svg {
+                    transform: scale(1);
+                    cursor: pointer !important;
+                    transition: .5s all ease-in-out;
+                    &:hover {
+                        transform: scale(1.2);
+                    }
+                    svg {
+                        cursor: pointer;
+                    }
+                }
+            }
+            .contact {
+                &_link {
+                    display: flex;
+                    align-items: start;
+                    width: 70%;
+                    flex-direction: column;
+                    @media screen and (max-width: 450px) {
+                        width: 100%;
+                    }
+                    &-block {
+                        margin-bottom: 3rem;
+                        h2 {
+                            font-size: 3rem;
+                            margin-bottom: 2rem;
+                            @media screen and (max-width: 1000px) {
+                                font-size: 2rem;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        &--form {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+            @media screen and (max-width: 1000px) {
+                max-width: 320px;
+            }
+            input,
+            label {
+                margin-bottom: 1.5rem;
+                font-family: 'TT2020Base';
+                #legacy {
+                    margin-right: 1rem;
+                    margin-bottom: 0;
+                    background-color: black;
+                }
+                a {
+                    text-decoration: underline;
+                }
+                @media screen and (max-width: 750px) {
+                    margin-bottom: 2rem;
+                }
+            }
+            label {
+                @media screen and (max-width: 450px) {
+                    font-size: 1rem;
+                }
+            }
+            .form {
+                &_title {
+                    font-size: 3rem;
+                    margin-bottom: 3rem;
+                    @media screen and (max-width: 1000px) {
+                        font-size: 2rem;
+                    }
+                }
+                &_input {
+                    width: 100%;
+                    max-width: 420px;
+                    border: none;
+                    border-bottom: 1px solid black;
+                    &:focus {
+                        background: lightgray;
+                    }
+                    &:valid {
+                        border-bottom: 1px solid greenyellow;
+                    }
+                    &:invalid {
+                        border: none;
+                        background: none;
+                        border-bottom: 1px solid red;
+                    }
+                }
+                &_submit {
+                    cursor: pointer;
+                    background-color: black;
+                    color: white;
+                    border-radius: 20px;
+                    width: 210px;
+                    height: 40px;
+                    font-family: "TT2020Base";
+                    font-size: 1.2rem;
+                    border: none;
+                    margin-left: auto;
+                    margin-right: 19%;
+                    opacity: 1;
+                    transition: all .5s ease-in-out;
+                    @media screen and (max-width: 1000px) {
+                        margin-right: 0;
+                    }
+                    &[disabled] {
+                        cursor: not-allowed;
+                        opacity: .8;
+                    }
+                }
+            }
+        }
+    }
+}
 
 </style>
